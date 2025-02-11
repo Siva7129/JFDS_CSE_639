@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pH Scale</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            border: 2px solid black;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .ph-scale {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .ph-level {
+            width: 100%;
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid black; /* Line for each scale */
+        }
+        .ph-level:last-child {
+            border-bottom: none; /* Remove bottom border from last item */
+        }
+
+        /* 🎨 Assigning unique colors to each pH level */
+        .ph-level-0 { background-color: #868ce3; }  /* Strong Acid (Red) */
+        .ph-level-1 { background-color: #7d66e4; }  
+        .ph-level-2 { background-color: #5239e2; }  
+        .ph-level-3 { background-color: #2766b3; }  
+        .ph-level-4 { background-color: #ffcc00; }  
+        .ph-level-5 { background-color: #ffff00; }  
+        .ph-level-6 { background-color: #ccff33; }  
+        .ph-level-7 { background-color: #008000; }  /* Neutral (Green) */
+        .ph-level-8 { background-color: #66ccff; }  
+        .ph-level-9 { background-color: #f70e0e; }  
+        .ph-level-10 { background-color: #ea0505; }  
+        .ph-level-11 { background-color: #f30606; }  
+        .ph-level-12 { background-color: #f81111; }  
+        .ph-level-13 { background-color: #ff1313; }  
+        .ph-level-14 { background-color: #f20f1e; }  /* Strong Alkaline (Blue) */
+
+    </style>
+</head>
+<body>
+
+    <h1>pH Scale</h1>
+    <div class="container">
+        <div class="ph-scale">
+            <div class="ph-level ph-level-0">0 - Very Acidic</div>
+            <div class="ph-level ph-level-1">1</div>
+            <div class="ph-level ph-level-2">2</div>
+            <div class="ph-level ph-level-3">3</div>
+            <div class="ph-level ph-level-4">4</div>
+            <div class="ph-level ph-level-5">5</div>
+            <div class="ph-level ph-level-6">6</div>
+            <div class="ph-level ph-level-7">7 - Neutral</div>
+            <div class="ph-level ph-level-8">8</div>
+            <div class="ph-level ph-level-9">9</div>
+            <div class="ph-level ph-level-10">10</div>
+            <div class="ph-level ph-level-11">11</div>
+            <div class="ph-level ph-level-12">12</div>
+            <div class="ph-level ph-level-13">13</div>       
+            <div class="ph-level ph-level-14">14 - Very Alkaline</div>
+        </div>
+    </div>
+
+</body>
+</html>
