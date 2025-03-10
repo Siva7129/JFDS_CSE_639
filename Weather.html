@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp</title>
+    <style>
+        p{
+            font-size: 20px;
+            text-align: center;
+        }
+        body{
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Alliance Weather Finder
+    </h1>
+    <input type="search" name="cityName" id="city" placeholder="Enter City Name">
+    <button id="getWeather">Get Current Weather</button>
+
+    <div id="weatherInfo">
+        <h2>Weather Information</h2>
+        <p id="cityName">
+           
+        </p>
+        <p id="weather">
+
+        </p>
+        <p id="temp">
+            --°C
+        </p>
+        <p id="humidity">
+
+        </p>
+        <p id="wind">
+
+        </p>
+    </div>
+    <script>
+    const apiKey ={
+        key:  "ee3c4556762731dfc0b71de0963b7936"
+    }
+    
+    const searchInput = document.getElementById('city');
+    const searchButton = document.getElementById('getWeather');
+    
+    searchButton.addEventListener('click', (e) => {
+        getWeather(searchInput.value);
+    });
+    
+    function getWeather(city){
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey.key}`)
+        .then((response) => {
+            return response.json();
+        }).then((response) => {
+            showWeather(response);
+        });
+    }
+    
+    function showWeather(data){
+        console.log(data);
+        const temp = document.getElementById('temp');
+        const humidity = document.getElementById('humidity');
+        const wind = document.getElementById('wind');
+        const weather = document.getElementById('weather');
+        const city = document.getElementById('cityName');
+    
+        city.innerText = data.name;
+        humidity.innerText = data.main.humidity+'%';
+        wind.innerText = data.wind.speed+'m/s';
+        weather.innerText = data.weather[0].description;
+    
+        if(data.weather[0].description == 'clear sky'){
+            document.body.style.backgroundImage = "u rl('https://th.bing.com/th/id/OIP.1BNXPq-fvc31m6BjtcPBngHaE8?w=268&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7')";
+        }else if(data.weather[0].description == 'few clouds'){
+            document.body.style.backgroundImage = "u rl('https://th.bing.com/th/id/OIP.wulRumBTGb1zkpUBcw-BGwHaEK?w=321&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7')";
+        }else if(data.weather[0].description == 'scattered clouds'){
+            document.body.style.backgroundImage = "u rl('https://th.bing.com/th/id/OIP.6918ysOR8WCYnXlzBXLEmgHaEO?w=319&h=181&c=7&r=0&o=5&dpr=1.4&pid=1.7')";
+        }else if(data.weather[0].description == 'broken clouds'){
+            document.body.style.backgroundImage = "u rl('https://th.bing.com/th/id/OIP.5uoiTi_XKq69E6P8SfTETwHaE7?rs=1&pid=ImgDetMain')";
+        }else if(data.weather[0].description == 'shower rain'){
+            document.body.style.backgroundImage = "u rl('https://th.bing.com/th/id/OIP.Ootsu_3EECKFy2t1ABZ-iwHaDt?rs=1&pid=ImgDetMain')";
+        }else if(data.weather[0].description == 'rain'){
+            document.body.style.backgroundImage = "u rl('https://wallpapers.com/images/hd/beautiful-rain-pouring-on-the-road-e1f4fezsrrut5h10.jpg')";
+        }else if(data.weather[0].description == 'thunderstorm'){
+            document.body.style.backgroundImage = "u rl('https://img.fotocommunity.com/severe-thunderstorm-938ae087-f6eb-4ec0-8be9-54b66ce98788.jpg?height=1080')";
+        }
+        temp.innerText= data.main.temp+'°C';
+    }
+        </script>
+    </body>
+    </html>
+    
